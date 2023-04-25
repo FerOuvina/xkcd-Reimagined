@@ -2,7 +2,7 @@ import fs from "fs-extra";
 import axios from "axios";
 
 const initialID = 2700;
-const maxId = 2701;
+const maxId = 2710;
 
 for (let i = initialID; i < maxId; i++) {
   const url = `https://xkcd.com/${i}/info.0.json`;
@@ -16,7 +16,7 @@ for (let i = initialID; i < maxId; i++) {
     ...restOfComic,
   };
 
-  const filePath = `./comics/${id}.json`;
+  const filePath = `./WebComicToLocal/comics/${id}.json`;
   await fs.outputJSON(filePath, comic);
   console.log(data);
 }
