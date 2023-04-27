@@ -17,6 +17,7 @@
     "react-dom": "18.2.0"
   },
   "devDependencies": {
+    "image-size": "1.0.2",
     "next-themes": "^0.2.1"
   }
 }
