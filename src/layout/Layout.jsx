@@ -1,11 +1,7 @@
-import { Box } from "./Box.jsx";
+import { Container } from "@nextui-org/react";
 
 export const Layout = ({ children }) => (
-  <Box
-    css={{
-      maxW: "100%"
-    }}
-  >
+  <Container fluid display="flex" justify="center" alignItems="center" as="main">
     {children}
-  </Box>
+  </Container>
 );
