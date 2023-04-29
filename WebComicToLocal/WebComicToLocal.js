@@ -5,6 +5,7 @@ import { log, time } from "./log.js";
 
 const initialID = 2700;
 const maxId = 2768;
+const indexFileContent = [];
 const endTime = time(`Ended in`);
 
 for (let i = initialID; i < maxId; i++) {
@@ -24,9 +25,12 @@ for (let i = initialID; i < maxId; i++) {
     ...restOfComic,
   };
 
+  indexFileContent.push(comic);
   const filePath = `./WebComicToLocal/comics/${id}.json`;
   await fs.outputJSON(filePath, comic);
   log(`Wrote comic #${id} to ${filePath}`);
 }
 
+await fs.writeJSON("./WebComicToLocal/index.json", indexFileContent);
+log(`Wrote Index Content`);
 endTime();
