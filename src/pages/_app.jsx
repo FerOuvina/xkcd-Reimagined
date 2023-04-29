@@ -1,29 +1,28 @@
 import { NextUIProvider, createTheme } from "@nextui-org/react";
-import { ThemeProvider } from "next-themes";
 import { NavigationBar } from "../components/Navbar";
-
-const darkTheme = createTheme({
-  type: "dark",
-});
-
-const lightTheme = createTheme({
-  type: "light",
-});
+import Head from "next/head";
 
 export default function App({ Component, pageProps }) {
+  const theme = createTheme({
+    type: "dark",
+    theme: {
+      colors: {
+        primary: "#4ADE7B",
+        secondary: "#F9CB80",
+        error: "#FCC5D8",
+      },
+    },
+  });
+
   return (
-    <ThemeProvider
-      defaultTheme="system"
-      attribute="class"
-      value={{
-        light: lightTheme.className,
-        dark: darkTheme.className,
-      }}
-    >
-      <NextUIProvider>
-        <NavigationBar />
-        <Component {...pageProps} />
-      </NextUIProvider>
-    </ThemeProvider>
+    <NextUIProvider theme={theme}>
+      <Head>
+        <meta name="description" content="Comics for developers" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <NavigationBar />
+      <Component {...pageProps} />
+    </NextUIProvider>
   );
 }
