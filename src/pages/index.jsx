@@ -4,17 +4,20 @@ import Image from "next/image";
 import { Container, Link, Text } from "@nextui-org/react";
 import { Layout } from "@/layout/Layout";
 import { Footer } from "@/components/Footer";
+import { useI18N } from "@/context/i18n.js";
 
 export default function Home({ latestComics }) {
+  const { t } = useI18N();
+
   return (
     <Layout>
       <Head>
-        <title>xkcd - Reimagined || Comics for Devs</title>
+        <title>{`xkcd - Reimagined || ${t("SEO_DEFAULT_TITLE")}`}</title>
       </Head>
 
       <section>
-        <Text h2 size="$3xl">
-          Latest Comics
+        <Text h1 size="$3xl">
+          {t("LATEST_COMICS")}
         </Text>
         {latestComics.map((comic) => {
           return (

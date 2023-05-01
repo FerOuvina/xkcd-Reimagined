@@ -5,6 +5,7 @@ import { basename } from "path";
 import { Container, Text, Link } from "@nextui-org/react";
 import { Layout } from "@/layout/Layout";
 import { Footer } from "@/components/Footer";
+import { useI18N } from "@/context/i18n";
 
 export default function Comic({
   img,
@@ -17,11 +18,13 @@ export default function Comic({
   hasNextRes,
   hasPrevRes,
 }) {
+  const { t } = useI18N();
+
   return (
     <>
       <Layout>
         <Head>
-          <title>xkcd - Reimagined || Comics for Devs</title>
+          <title>{`xkcd - Reimagined || ${t("SEO_DEFAULT_TITLE")}`}</title>
           <meta name="description" content="Comics for developers" />
         </Head>
 

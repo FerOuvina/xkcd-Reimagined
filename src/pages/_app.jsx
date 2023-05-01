@@ -1,6 +1,7 @@
+import Head from "next/head";
 import { NextUIProvider, createTheme } from "@nextui-org/react";
 import { NavigationBar } from "../components/Navbar";
-import Head from "next/head";
+import { I18NProvider } from "../context/i18n.js";
 
 export default function App({ Component, pageProps }) {
   const theme = createTheme({
@@ -21,8 +22,10 @@ export default function App({ Component, pageProps }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <NavigationBar />
-      <Component {...pageProps} />
+      <I18NProvider>
+        <NavigationBar />
+        <Component {...pageProps} />
+      </I18NProvider>
     </NextUIProvider>
   );
 }
