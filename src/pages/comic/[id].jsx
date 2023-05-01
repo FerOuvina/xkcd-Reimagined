@@ -52,12 +52,17 @@ export default function Comic({
   );
 }
 
-export async function getStaticPaths() {
+export async function getStaticPaths({ locales }) {
   const files = await fs.readdir("./WebComicToLocal/comics");
+  let paths = [];
 
-  const paths = files.map((file) => {
-    const id = basename(file, ".json");
-    return { params: { id } };
+  locales.forEach((locale) => {
+    paths = paths.concat(
+      files.map((file) => {
+        const id = basename(file, ".json");
+        return { params: { id }, locale };
+      })
+    );
   });
 
   return {
@@ -74,7 +79,6 @@ export async function getStaticProps({ params }) {
   );
   const comic = JSON.parse(content);
 
-  // return total amount of comics
   const totalComics = await fs.readdir("./WebComicToLocal/comics");
   const totalComicsAmout = totalComics.length;
 
