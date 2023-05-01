@@ -1,10 +1,12 @@
 import { useState, useRef } from "react";
-import { Text, Navbar, Input } from "@nextui-org/react";
+import { Text, Navbar, Input, Dropdown } from "@nextui-org/react";
 import { SearchIcon } from "../layout/SearchIcon";
 import { useRouter } from "next/router";
 import Link from "next/link";
 
 function NavigationBar() {
+  const { locale, locales } = useRouter();
+
   const router = useRouter();
   const [results, setResults] = useState([]);
   const searchRef = useRef();
@@ -30,6 +32,8 @@ function NavigationBar() {
 
     return e.target.value;
   };
+
+  const restOfLocales = locales.filter((l) => l !== locale);
 
   return (
     <Navbar
@@ -102,6 +106,17 @@ function NavigationBar() {
             />
           </form>
         </Navbar.Item>
+        <Dropdown isBordered>
+          <Navbar.Item>
+            <Dropdown.Button />
+          </Navbar.Item>
+
+          <Dropdown.Menu aria-label="Locale">
+            <Dropdown.Item>
+              <Link href="/" locale={restOfLocales[0]}> Locale: {restOfLocales}</Link>
+            </Dropdown.Item>
+          </Dropdown.Menu>
+        </Dropdown>
       </Navbar.Content>
     </Navbar>
   );
