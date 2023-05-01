@@ -1,6 +1,9 @@
 import algoliasearch from "algoliasearch/lite";
 
-const client = algoliasearch("Z51W8B5MTT", "ec2af93ed756b7d6de96f5f016ae1ca8");
+const APP_ID = process.env.APP_ID;
+const API_KEY = process.env.API_KEY;
+
+const client = algoliasearch(APP_ID, API_KEY);
 const index = client.initIndex("xkcd - Reimagined Index");
 
 const CACHE = {};
