@@ -56,7 +56,6 @@ function NavigationBar() {
       </Navbar.Brand>
 
       <Navbar.Content
-        enableCursorHighlight
         color="default"
         activeColor="error"
         variant="underline"
@@ -106,14 +105,16 @@ function NavigationBar() {
             />
           </form>
         </Navbar.Item>
-        <Dropdown isBordered>
+        <Dropdown>
           <Navbar.Item>
-            <Dropdown.Button />
+            <Dropdown.Button color={"error"} />
           </Navbar.Item>
 
           <Dropdown.Menu aria-label="Locale">
             <Dropdown.Item>
-              <Link href="/" locale={restOfLocales[0]}> Locale: {restOfLocales}</Link>
+              <Link href="/" locale={restOfLocales[0]}>
+                <Text color="primary">Locale: {restOfLocales}</Text>
+              </Link>
             </Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
