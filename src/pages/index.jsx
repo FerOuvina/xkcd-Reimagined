@@ -5,9 +5,12 @@ import { Container, Link, Text } from "@nextui-org/react";
 import { Layout } from "@/layout/Layout";
 import { Footer } from "@/components/Footer";
 import { useI18N } from "@/context/i18n.js";
+import { useRouter } from "next/router";
 
 export default function Home({ latestComics }) {
   const { t } = useI18N();
+  const { locale } = useRouter();
+  console.log(locale);
 
   return (
     <Layout>
@@ -22,7 +25,7 @@ export default function Home({ latestComics }) {
         {latestComics.map((comic) => {
           return (
             <article key={comic.id}>
-              <Link href={`/comic/${comic.id}`}>
+              <Link href={`/${locale}/comic/${comic.id}`}>
                 <Container
                   display="flex"
                   direction="column"
