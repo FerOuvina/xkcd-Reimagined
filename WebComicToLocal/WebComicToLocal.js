@@ -3,8 +3,8 @@ import axios from "axios";
 import { getImageSize } from "./getImageSize.js";
 import { log, time } from "./log.js";
 
-const initialID = 2700;
-const maxId = 2768;
+const initialID = 699;
+const maxId = 1000;
 const indexFileContent = [];
 const endTime = time(`Ended in`);
 
