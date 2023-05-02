@@ -2,6 +2,7 @@ import Head from "next/head";
 import { NextUIProvider, createTheme } from "@nextui-org/react";
 import { NavigationBar } from "../components/Navbar";
 import { I18NProvider } from "../context/i18n.js";
+import './styles.css'
 
 export default function App({ Component, pageProps }) {
   const theme = createTheme({
