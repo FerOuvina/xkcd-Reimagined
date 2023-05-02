@@ -49,7 +49,19 @@ function NavigationBar() {
     >
       <Navbar.Brand aria-label="Brand">
         <Link aria-label="Brand" href="/">
-          <Text b color="default" aria-label="Brand" className="nav-link">
+          <Text
+            b
+            color="default"
+            aria-label="Brand"
+            className="nav-link"
+            css={{
+              transition: "all 1s ease",
+              padding: "0.5rem",
+              "&:hover": {
+                color: "#fcc5d8",
+              },
+            }}
+          >
             XKCD - Reimagined
           </Text>
         </Link>
@@ -68,21 +80,35 @@ function NavigationBar() {
           justifyContent: "center",
         }}
       >
-        <Navbar.Link href="/" aria-label="Home">
-          <Text b color="default" className="nav-link">
+        <Navbar.Link href={`/${locale}/`} aria-label="Home">
+          <Text
+            b
+            color="default"
+            className="nav-link"
+            css={{
+              transition: "all 1s ease",
+              "&:hover": {
+                color: "#fcc5d8",
+              },
+            }}
+          >
             Home
           </Text>
         </Navbar.Link>
 
-        <Navbar.Link href="/about" aria-label="About">
-          <Text b color="inherit" className="nav-link">
+        <Navbar.Link href={`/${locale}/about`} aria-label="About">
+          <Text
+            b
+            color="inherit"
+            className="nav-link"
+            css={{
+              transition: "all 1s ease",
+              "&:hover": {
+                color: "#fcc5d8",
+              },
+            }}
+          >
             About
-          </Text>
-        </Navbar.Link>
-
-        <Navbar.Link href="/contact" aria-label="Contact">
-          <Text b color="inherit" className="nav-link">
-            Contact
           </Text>
         </Navbar.Link>
 
@@ -94,7 +120,6 @@ function NavigationBar() {
               ref={searchRef}
               clearable
               underlined
-              bordered
               color="error"
               contentLeftStyling={false}
               placeholder="Search..."
