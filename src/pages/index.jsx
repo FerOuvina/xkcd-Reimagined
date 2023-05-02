@@ -6,11 +6,12 @@ import { Layout } from "@/layout/Layout";
 import { Footer } from "@/components/Footer";
 import { useI18N } from "@/context/i18n.js";
 import { useRouter } from "next/router";
+import { memo } from "react";
 
-export default function Home({ latestComics }) {
+const Home = memo(function Home({ latestComics }) {
+  const comicsToRender = latestComics.slice(0, 5);
   const { t } = useI18N();
   const { locale } = useRouter();
-  console.log(locale);
 
   return (
     <Layout>
@@ -18,41 +19,64 @@ export default function Home({ latestComics }) {
         <title>{`xkcd - Reimagined || ${t("SEO_DEFAULT_TITLE")}`}</title>
       </Head>
 
-      <section>
-        <Text h1 size="$3xl">
-          {t("LATEST_COMICS")}
-        </Text>
-        {latestComics.map((comic) => {
+      <Text h1 color="default">
+        {t("LATEST_COMICS")}
+      </Text>
+
+      <Container as="section">
+        {comicsToRender.map((comic) => {
           return (
-            <article key={comic.id}>
-              <Link href={`/${locale}/comic/${comic.id}`}>
-                <Container
-                  display="flex"
-                  direction="column"
-                  gap={1}
-                  justify="center"
-                  alignItems="center"
+            <Container
+              as="article"
+              key={comic.id}
+              display="flex"
+              justify="center"
+              css={{}}
+            >
+              <Link
+                href={`/${locale}/comic/${comic.id}`}
+                css={{
+                  display: "flex",
+                  flexDirection: "column",
+                  padding: "1rem",
+                  margin: "0.6rem",
+                  backgroundColor: "#16181A",
+                  border: "1px solid #2C2F33",
+                  borderRadius: "0.5rem",
+                  boxShadow: "2px 2px 2px 1px #2C2F33",
+                  transition: "all 0.3s ease-in-out",
+                  "&:hover": {
+                    boxShadow: "2px 2px 2px 1px #fcc5d8",
+                  },
+                }}
+              >
+                <Text
+                  size={25}
+                  color="warning"
+                  css={{
+                    paddingBottom: "0.5rem",
+                  }}
                 >
-                  <Text h3 size="$2xl">
-                    {comic.title}
-                  </Text>
-                  <Image
-                    src={comic.img}
-                    alt={comic.alt}
-                    width={comic.width}
-                    height={comic.height}
-                    id={comic.id}
-                  />
-                </Container>
+                  {comic.title}
+                </Text>
+                <Image
+                  src={comic.img}
+                  alt={comic.alt}
+                  width={comic.width}
+                  height={comic.height}
+                  id={comic.id}
+                />
               </Link>
-            </article>
+            </Container>
           );
         })}
-      </section>
+      </Container>
       <Footer />
     </Layout>
   );
-}
+});
+
+export default Home;
 
 export async function getStaticProps() {
   const files = await fs.readdir(`./WebComicToLocal/comics`);

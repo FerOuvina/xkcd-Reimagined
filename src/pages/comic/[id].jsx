@@ -2,12 +2,13 @@ import fs from "fs/promises";
 import Head from "next/head";
 import Image from "next/image";
 import { basename } from "path";
-import { Container, Text, Link } from "@nextui-org/react";
+import { Container, Text, Link, Button } from "@nextui-org/react";
 import { Layout } from "@/layout/Layout";
 import { Footer } from "@/components/Footer";
 import { useI18N } from "@/context/i18n";
+import { memo } from "react";
 
-export default function Comic({
+const Comic = memo(function Comic({
   img,
   title,
   alt,
@@ -21,36 +22,75 @@ export default function Comic({
   const { t } = useI18N();
 
   return (
-    <>
-      <Layout>
-        <Head>
-          <title>{`xkcd - Reimagined || ${t("SEO_DEFAULT_TITLE")}`}</title>
-          <meta name="description" content="Comics for developers" />
-        </Head>
-
-        <Container as="section">
-          <Text h1>{title}</Text>
-          <Image width={width} height={height} src={img} alt={alt}></Image>
-          <Text>{alt}</Text>
+    <Layout>
+      <Head>
+        <title>{`xkcd - Reimagined || ${t("SEO_DEFAULT_TITLE")}`}</title>
+        <meta name="description" content="Comics for developers" />
+      </Head>
+      <Text h1>{title}</Text>
+      <Container
+        as="section"
+        display="flex"
+        direction="column"
+        alignItems="center"
+      >
+        <Container
+          as="article"
+          display="flex"
+          justify="center"
+          css={{
+            padding: "1rem",
+            margin: "0.6rem",
+            backgroundColor: "#16181A",
+            border: "1px solid #2C2F33",
+            borderRadius: "0.5rem",
+            boxShadow: "2px 2px 2px 1px #2C2F33",
+            transition: "all 0.3s ease-in-out",
+            "&:hover": {
+              boxShadow: "2px 2px 2px 1px #fcc5d8",
+            },
+          }}
+        >
+          <Image
+            className="comic-img"
+            showSkeleton
+            width={width}
+            height={height}
+            src={img}
+            alt={alt}
+          ></Image>
+          <Text size={20} color="warning" css={{ margin: "1rem" }}>
+            {alt}
+          </Text>
         </Container>
 
         <Container as="section" display="flex" justify="space-evenly">
           {hasPrevRes && (
-            <Link href={`/comic/${prevId}`}>
-              <Text>Previous</Text>
+            <Link href={`/comic/${prevId}`} css={{ margin: "0.5rem" }}>
+              <Button shadow rounded bordered color="gradient">
+                <Text color="default" size={20}>
+                  Previous
+                </Text>
+              </Button>
             </Link>
           )}
           {hasNextRes && (
             <Link href={`/comic/${nextId}`}>
-              <Text>Next</Text>
+              <Button shadow rounded bordered color="gradient">
+                <Text color="default" size={20}>
+                  Next
+                </Text>
+              </Button>
             </Link>
           )}
         </Container>
         <Footer />
-      </Layout>
-    </>
+      </Container>
+    </Layout>
   );
-}
+});
+
+export default Comic;
 
 export async function getStaticPaths({ locales }) {
   const files = await fs.readdir("./WebComicToLocal/comics");
