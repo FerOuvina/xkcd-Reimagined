@@ -1,0 +1,32 @@
+:root {
+  --gradient: linear-gradient(
+    112deg,
+    #06b7db -63.59%,
+    #ff4ecd -20.3%,
+    #0072f5 70.46%
+  );
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  background: #18061f;
+}
+
+.comic-img {
+  transition: all 1s ease-in-out;
+}
+
+.comic-img:hover {
+  box-shadow: 0px 0px 0px 2px #0b70f354;
+}
+
+.img-result {
+  object-fit: contain;
+}
+
+.text-result {
+  text-align: center;
+}
