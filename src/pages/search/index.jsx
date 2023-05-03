@@ -5,8 +5,13 @@ import { Footer } from "@/components/Footer.jsx";
 import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
+import { useRouter } from "next/router.js";
+import { useI18N } from "@/context/i18n.js";
 
 export default function Search({ query, results }) {
+  const { t } = useI18N();
+  const { locale } = useRouter();
+
   return (
     <Layout>
       <Head>
@@ -20,7 +25,7 @@ export default function Search({ query, results }) {
 
       <Container display="flex" justify="center">
         <Text h1>
-          Search results for{" "}
+          {t("SEARCH_RESULTS")}{" "}
           <Text span color="warning">
             {query}
           </Text>
@@ -50,7 +55,7 @@ export default function Search({ query, results }) {
                   },
                 }}
               >
-                <Link href={`/comic/${result.id}`}>
+                <Link href={`/${locale}/comic/${result.id}`}>
                   <Image
                     className="img-result"
                     src={result.img}

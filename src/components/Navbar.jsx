@@ -3,8 +3,10 @@ import { Text, Navbar, Input, Dropdown } from "@nextui-org/react";
 import { SearchIcon } from "../layout/SearchIcon";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import { useI18N } from "@/context/i18n";
 
 function NavigationBar() {
+  const { t } = useI18N();
   const { locale, locales } = useRouter();
 
   const router = useRouter();
@@ -48,7 +50,7 @@ function NavigationBar() {
       }}
     >
       <Navbar.Brand aria-label="Brand">
-        <Link aria-label="Brand" href="/">
+        <Link aria-label="Brand" href={`/${locale}/`}>
           <Text
             b
             color="default"
@@ -62,7 +64,7 @@ function NavigationBar() {
               },
             }}
           >
-            XKCD - Reimagined
+            {t("NAVBAR_BRAND")}
           </Text>
         </Link>
       </Navbar.Brand>
@@ -92,11 +94,11 @@ function NavigationBar() {
               },
             }}
           >
-            Home
+            {t("NAVBAR_HOME")}
           </Text>
         </Navbar.Link>
 
-        <Navbar.Link href={`/${locale}/about`} aria-label="About">
+        <Navbar.Link href={`/${locale}/about/${locale}`} aria-label="About">
           <Text
             b
             color="inherit"
@@ -108,7 +110,7 @@ function NavigationBar() {
               },
             }}
           >
-            About
+            {t("NAVBAR_ABOUT")}
           </Text>
         </Navbar.Link>
 
@@ -122,7 +124,7 @@ function NavigationBar() {
               underlined
               color="error"
               contentLeftStyling={false}
-              placeholder="Search..."
+              placeholder={t("NAVBAR_SEARCH_PLACEHOLDER")}
               aria-label="Search"
               contentLeft={
                 <SearchIcon fill="var(--nextui-colors-accents9)" size={16} />
