@@ -3,14 +3,14 @@ import axios from "axios";
 import { getImageSize } from "./getImageSize.js";
 import { log, time } from "./log.js";
 
-const initialID = 699;
-const maxId = 1000;
+const initialID = 2500;
+const maxId = 2700;
 const indexFileContent = [];
 const endTime = time(`Ended in`);
 
 for (let i = initialID; i < maxId; i++) {
   const url = `https://xkcd.com/${i}/info.0.json`;
-  log(`Getting ${url}...`);
+  log(`Getting ${url}...`); 
   const { data } = await axios.get(url);
   const { num: id, news, transcript, img, ...restOfComic } = data;
   log(`Writing comic #${id}...`);
