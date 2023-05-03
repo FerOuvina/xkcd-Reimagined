@@ -1,4 +1,21 @@
 {
   "LATEST_COMICS": "Ultimos Cómics",
-  "SEO_DEFAULT_TITLE": "Cómics para Desarrolladores"
+  "SEO_DEFAULT_TITLE": "Cómics para Desarrolladores",
+
+  "NAVBAR_BRAND": "XKCD - Reimaginado",
+  "NAVBAR_HOME": "Inicio",
+  "NAVBAR_ABOUT": "Acerca de",
+  "NAVBAR_SEARCH_PLACEHOLDER": "Buscar...",
+
+  "SEARCH_RESULTS": "Resultados de busqueda para",
+
+  "ABOUT_TITLE": "Acerca de este proyecto",
+  "ABOUT_DESCRIPTION_AUTHOR": "Esta es una version reimaginada de la pagina original hecha por",
+  "ABOUT_DESCRIPTION": "Este sitio web fue hecho solamente con el proposito de aprender Next.js y NextUI.org",
+  "ABOUT_REPOSITORY": "El codigo fuente se aloja en",
+  "ABOUT_ORIGINAL_AUTHOR": "Todos los recursos utilizados en esta pagina pertenecen a su autor original",
+  "ABOUT_ORIGINAL_AUTHOR_WEBSITE": "La pagina original se aloja en",
+
+  "FOOTER_DESCRIPTION_COMICS": "Comics hechos por",
+  "FOOTER_DESCRIPTION_WEBSITE": "Sitio web hecho por"
 }

@@ -1,4 +1,21 @@
 {
   "LATEST_COMICS": "Latest Comics",
-  "SEO_DEFAULT_TITLE": "Comics for Devs"
+  "SEO_DEFAULT_TITLE": "Comics for Devs",
+
+  "NAVBAR_BRAND": "XKCD - Reimagined",
+  "NAVBAR_HOME": "Home",
+  "NAVBAR_ABOUT": "About",
+  "NAVBAR_SEARCH_PLACEHOLDER": "Search...",
+
+  "SEARCH_RESULTS": "Search results for",
+
+  "ABOUT_TITLE": "About this project",
+  "ABOUT_DESCRIPTION_AUTHOR": "This is a reimagined version of the original page made by",
+  "ABOUT_DESCRIPTION": "This was made only for the porpouse of learning Next.js and NextUI.org",
+  "ABOUT_REPOSITORY": "The source code is available on",
+  "ABOUT_ORIGINAL_AUTHOR": "All the resources used in this project belong to its original autor",
+  "ABOUT_ORIGINAL_AUTHOR_WEBSITE": "The original page is available on",
+
+  "FOOTER_DESCRIPTION_COMICS": "Comics by",
+  "FOOTER_DESCRIPTION_WEBSITE": "Website by"
 }
