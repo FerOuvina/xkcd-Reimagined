@@ -2,8 +2,11 @@ import { Layout } from "@/layout/Layout";
 import { Container, Text } from "@nextui-org/react";
 import { Footer } from "@/components/Footer";
 import Link from "next/link";
+import { useI18N } from "@/context/i18n";
 
 export default function About() {
+  const { t } = useI18N();
+
   return (
     <Layout>
       <Container
@@ -20,10 +23,10 @@ export default function About() {
         }}
       >
         <Text h1 size={45}>
-          About this project
+          {t("ABOUT_TITLE")}
         </Text>
         <Text blockquote size={25} css={{ textAlign: "center" }}>
-          This is a reimagined version of the original page made by{" "}
+          {t("ABOUT_DESCRIPTION_AUTHOR")}{" "}
           <Link
             href="https://github.com/FerOuvina"
             target="_blank"
@@ -32,10 +35,10 @@ export default function About() {
             Fernando Ouvi&#241;a
           </Link>{" "}
           <br />
-          This was made only for the porpouse of learning Next.js and NextUI.org
+          {t("ABOUT_DESCRIPTION")}
           <br />
           <br />
-          The source code is available on{" "}
+          {t("ABOUT_REPOSITORY")}{" "}
           <Link
             content="GitHub"
             target="_blank"
@@ -46,9 +49,8 @@ export default function About() {
           </Link>
         </Text>
         <Text blockquote size={25} css={{ textAlign: "center" }}>
-          All the resources used in this project belong to its original autor{" "}
-          <br />
-          The original page is available on:{" "}
+          {t("ABOUT_ORIGINAL_AUTHOR")} <br />
+          {t("ABOUT_ORIGINAL_AUTHOR_WEBSITE")}:{" "}
           <Link
             href="https://xkcd.com/"
             target="_blank"
