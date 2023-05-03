@@ -7,6 +7,7 @@ import { Layout } from "@/layout/Layout";
 import { Footer } from "@/components/Footer";
 import { useI18N } from "@/context/i18n";
 import { memo } from "react";
+import { useRouter } from "next/router";
 
 const Comic = memo(function Comic({
   img,
@@ -20,6 +21,7 @@ const Comic = memo(function Comic({
   hasPrevRes,
 }) {
   const { t } = useI18N();
+  const { locale } = useRouter();
 
   return (
     <Layout>
@@ -37,6 +39,9 @@ const Comic = memo(function Comic({
         <Container
           as="article"
           display="flex"
+          direction="column"
+          alignContent="center"
+          alignItems="center"
           justify="center"
           css={{
             padding: "1rem",
@@ -66,7 +71,7 @@ const Comic = memo(function Comic({
 
         <Container as="section" display="flex" justify="space-evenly">
           {hasPrevRes && (
-            <Link href={`/comic/${prevId}`} css={{ margin: "0.5rem" }}>
+            <Link href={`/${locale}/comic/${prevId}`} css={{ margin: "0.5rem" }}>
               <Button shadow rounded bordered color="gradient">
                 <Text color="default" size={20}>
                   Previous
@@ -75,7 +80,7 @@ const Comic = memo(function Comic({
             </Link>
           )}
           {hasNextRes && (
-            <Link href={`/comic/${nextId}`}>
+            <Link href={`/${locale}/comic/${nextId}`}>
               <Button shadow rounded bordered color="gradient">
                 <Text color="default" size={20}>
                   Next
