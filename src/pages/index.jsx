@@ -9,7 +9,24 @@ import { useRouter } from "next/router";
 import { memo } from "react";
 
 const Home = memo(function Home({ latestComics }) {
-  const comicsToRender = latestComics.slice(0, 5);
+  let comicsToRender = [];
+
+  // Get the last comic id
+  let maxId = 0;
+  latestComics.forEach((comic) => {
+    if (comic.id > maxId) {
+      maxId = comic.id;
+    }
+  });
+
+  // Getting the last 10 comics to render
+  for (let i = maxId; i > maxId - 10; i--) {
+    const comic = latestComics.find((comic) => comic.id === i);
+    if (comic) {
+      comicsToRender.push(comic);
+    }
+  }
+
   const { t } = useI18N();
   const { locale } = useRouter();
 
