@@ -2,7 +2,7 @@
 
 ## This is a project made to learn Next.js in conjunction with NextUI.org
 
-## In the course of this project I have learned a lot of things, such as:
+In the course of this project I have learned a lot of things, such as:
 
 * The use of getStaticProps to pre-render a page in build time using the returned props.
 * The use of getServerSideProps to pre-render a page on each request using the returned data.
